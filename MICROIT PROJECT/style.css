@@ -35,6 +35,18 @@ h1 {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.cell[data-index]:not(:empty) {
+  color: #333;
+}
+
+.cell[data-index]:not(:empty):contains('O') {
+  color: #4caf50;
+}
+
+.cell.o-move {
+  color: #4caf50;
+}
+
 .cell:hover {
   background-color: #e0e0e0;
   transform: scale(1.1);
@@ -56,9 +68,14 @@ h1 {
 }
 
 .cell.winning {
-  background-color: #4caf50;
+  background-color: #ff4444;
   color: white;
   font-weight: bold;
+  box-shadow: 0 0 10px 3px #ff4444;
+}
+
+.cell.o-winning {
+  background-color: #4caf50;
   box-shadow: 0 0 10px 3px #4caf50;
 }
 
