@@ -32,6 +32,11 @@ function handleCellClick(clickedCellEvent) {
 function updateCell(cell, index) {
   board[index] = currentPlayer;
   cell.textContent = currentPlayer;
+  if (currentPlayer === 'O') {
+    cell.classList.add('o-move');
+  } else {
+    cell.classList.remove('o-move');
+  }
 }
 
 function changePlayer() {
@@ -72,7 +77,11 @@ function checkResult() {
 
 function highlightWinningCells(cells) {
   cells.forEach(index => {
-    document.querySelector(`.cell[data-index='${index}']`).classList.add('winning');
+    const cell = document.querySelector(`.cell[data-index='${index}']`);
+    cell.classList.add('winning');
+    if (currentPlayer === 'O') {
+      cell.classList.add('o-winning');
+    }
   });
 }
 
@@ -83,7 +92,7 @@ function restartGame() {
   statusDiv.textContent = `Player ${currentPlayer}'s turn`;
   cells.forEach(cell => {
     cell.textContent = '';
-    cell.classList.remove('winning');
+    cell.classList.remove('winning', 'o-winning');
   });
 }
 
